@@ -20,7 +20,15 @@ public class Address {
         this.addr2 = addr2;
     }
 
-    public void geocoding(GeocodeManager geocodeManager) {
+    public Double getLat() {
+        return lat;
+    }
+
+    public Double getLng() {
+        return lng;
+    }
+
+    public void geoCoding(GeocodeManager geocodeManager) {
         String json = geocodeManager.getGeocode(makeAddress());
         Pattern p = Pattern.compile("lat[^0-9]+([0-9.]+)[^0-9]+([0-9.]+)");
         Matcher m = p.matcher(json);
@@ -38,13 +46,5 @@ public class Address {
         if (!isEmpty(addr2)) sb.append(" ").append(addr2);
 
         return sb.toString();
-    }
-
-    public Double getLat() {
-        return lat;
-    }
-
-    public Double getLng() {
-        return lng;
     }
 }

@@ -14,8 +14,8 @@ public class AddressTest {
 
     @Before
     public void setUp() throws Exception {
-        addr1 = "대한민국 대구광역시 동구 신암4동";
-        addr2 = "144-32";
+        addr1 = "서울 서초구 양재동";
+        addr2 = "양재역";
     }
 
     @Test
@@ -23,10 +23,10 @@ public class AddressTest {
         Address address = new Address(addr1, addr2);
         GeocodeManager geocodeManager = new GeocodeManager();
 
-        address.geocoding(geocodeManager);
+        address.geoCoding(geocodeManager);
 
-        assertThat(address.getLat(), is(35.8862363));
-        assertThat(address.getLng(), is(128.6284085));
+        assertThat(address.getLat(), is(37.48366499999999));
+        assertThat(address.getLng(), is(127.034796));
     }
 
 

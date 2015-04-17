@@ -15,17 +15,20 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableWebMvcSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    private OwnerDetailsService ownerDetailsService;
 
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
+    @Bean
+    public OwnerDetailsService ownerDetailsService() {
+        return new OwnerDetailsService();
+    }
+
     @Override
     protected UserDetailsService userDetailsService() {
-        return ownerDetailsService;
+        return ownerDetailsService();
     }
 
     @Override
@@ -37,8 +40,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
             .authorizeRequests()
-                .antMatchers("/", "/**", "/images/**", "/css/**", "/js/**").permitAll()
-                .antMatchers("/**/**").hasRole("ADMIN")
+                .antMatchers("/", "/images/**", "/css/**", "/js/**").permitAll()
+                .antMatchers("/**").hasRole("ADMIN")
                 .anyRequest().authenticated()
                 .and()
             .formLogin()

@@ -3,10 +3,8 @@ package spoon.common.security;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Service;
 import spoon.domain.Owner;
 
-@Service
 public class OwnerDetailsService implements UserDetailsService {
 
     @Override

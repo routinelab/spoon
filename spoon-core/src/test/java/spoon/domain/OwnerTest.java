@@ -8,9 +8,7 @@ public class OwnerTest {
 
     @Test
     public void canCreate() throws Exception {
-
         Owner owner = new Owner("username", "password");
         assertNotNull(owner);
-
     }
 }
